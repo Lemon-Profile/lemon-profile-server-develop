@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lemon.lemonprofile.mapper.UserMapper">
+    <select id="getUsers" resultType="TbUserVo">
+        SELECT * FROM TB_USER;
+    </select>
+    <insert id = 'createUser'>
+        INSERT INTO TB_USER VALUES (
+                                              #{USER_ID}, #{USER_PASSWORD}, #{EMAIL}, #{AGE}, #{WEIGHT}, #{HEIGHT}, #{SEX});
+    </insert>
+    <update id = 'updateUser'>
+        UPDATE TB_USER SET (
+        USER_PASSWORD = #{USER_PASSWORD},
+            EMAIL = #{EMAIL}, AGE =  #{AGE}, WEIGHT = #{WEIGHT}, HEIGHT = #{HEIGHT}, SEX = #{SEX}
+            WHERE USER_ID = #{USER_ID});
+    </update>
+    <delete id="deleteUser">
+        DELETE FROM TB_USER WHERE USER_ID = #{USER_ID}
+    </delete>
+
+    <select id="getUser" resultType="TbUserVo">
+        SELECT * FROM TB_USER WHERE USER_ID = #{USER_ID}
+    </select>
+
+
+</mapper>
